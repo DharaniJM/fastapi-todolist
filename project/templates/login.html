@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login</title>
+<style>
+  body {
+    margin: 0;
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login-container {
+    background-color: #1e1e1e;
+    padding: 40px 30px;
+    border-radius: 16px;
+    width: 320px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  }
+
+  h2 {
+    margin-bottom: 24px;
+    text-align: center;
+    color: #ffcc00;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ccc;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: #292929;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+  }
+
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    box-shadow: 0 0 8px #ffcc00;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #121212;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #e6b800;
+  }
+
+  /* Status label below button */
+  .status-label {
+    margin-top: 16px;
+    text-align: center;
+    font-weight: bold;
+    min-height: 20px;
+    color: #ff4444; /* default red for error */
+  }
+
+  .status-label.success {
+    color: #4CAF50; /* green */
+  }
+
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Login</h2>
+  <form  id="loginForm"  action="/login.html" method="post" autocomplete="on">
+<div>
+    <label for="email">Email</label>
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      placeholder="you@example.com" 
+      required 
+    />
+
+    <label for="password">Password</label>
+    <input 
+      type="password" 
+      id="password" 
+      name="password" 
+      placeholder="Your password" 
+      required 
+    />
+
+    <button type="submit" value="submit" id="buttonstyle">Login</button>
+</div> 
+    <!-- Status area (optional JavaScript will be needed if you want live messages) -->
+    <div id="status" class="status-label"></div>
+  </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

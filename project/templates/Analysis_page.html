@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Tracker</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0f0f0f;
+        --card-bg: #1a1a1a;
+        --text: #eaeaea;
+        --accent: #3b82f6;
+        --border: #2c2c2c;
+        --label-color: #bbb;
+        --label-border: #555;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      header h1 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      header button {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+
+      header button:hover {
+        background: #2563eb;
+      }
+
+      .filters {
+        background: var(--card-bg);
+        border-bottom: 1px solid var(--border);
+        padding: 20px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        user-select: none;
+      }
+
+      /* Form container with flex inline alignment */
+      .filters form {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      /* Labels for date inputs */
+      .filters label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--label-color);
+        min-width: 50px;
+      }
+
+      /* Date input styling */
+      .filters input[type="date"] {
+        background: #121212;
+        border: 1px solid var(--border);
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: var(--text);
+        font-size: 14px;
+        min-width: 160px;
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+      }
+
+      .filters input[type="date"]:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+
+      /* Submit button styling */
+      .filters button[type="submit"] {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        padding: 10px 24px;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        min-width: 100px;
+      }
+
+      .filters button[type="submit"]:hover {
+        background: #2563eb;
+      }
+
+      /* Date display below the form */
+      .date-display {
+        display: flex;
+        gap: 20px;
+        margin-top: 12px;
+        font-weight: 600;
+        color: var(--label-color);
+        font-size: 14px;
+        font-family: "Inter", sans-serif;
+      }
+
+      .date-display label {
+        border-bottom: 2px solid var(--label-border);
+        padding-bottom: 4px;
+        user-select: none;
+        cursor: default;
+      }
+
+      main {
+        padding: 40px 30px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin-bottom: 24px;
+        font-weight: 700;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .card-time {
+        font-size: 14px;
+        color: #a1a1a1;
+      }
+
+      @media (max-width: 480px) {
+        .filters form {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .filters input[type="date"],
+        .filters button[type="submit"] {
+          width: 100%;
+          min-width: auto;
+        }
+
+        .date-display {
+          justify-content: flex-start;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>⏱️ Time Tracker</h1>
+      <button onclick="location.href='return-homepage'">← Home</button>
+    </header>
+
+    <div class="filters">
+      <form method="post" action="/Analysis_page.html">
+        <label for="from-date">From:</label>
+        <input
+          type="date"
+          id="from-date"
+          name="from_date"
+          required
+          value="{{ from_date or '' }}"
+        />
+
+        <label for="to-date">To:</label>
+        <input
+          type="date"
+          id="to-date"
+          name="to_date"
+          required
+          value="{{ to_date or '' }}"
+        />
+
+        <button type="submit" id="btn">Show</button>
+      </form>
+    </div>
+
+    <main>
+      <h2>📊 Time by Category</h2>
+
+      {% if category_data %}
+      <div class="grid">
+        {% for row in category_data %} {% set total_minutes = row.total_minutes
+        | int %} {% set hours = total_minutes // 60 %} {% set mins =
+        total_minutes % 60 %}
+        <div class="card">
+          <div class="card-title">{{ row.category }}</div>
+          <div class="card-time">
+            {% if hours > 0 %}{{ hours }}h {% endif %}{% if mins > 0 %}{{ mins
+            }}m{% endif %}{% if hours == 0 and mins == 0 %}0m{% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p>No tasks found in this date range.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>

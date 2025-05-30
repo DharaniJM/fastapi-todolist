@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign Up</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: #121212;
+        font-family: Arial, sans-serif;
+        color: white;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .signup-container {
+        background-color: #1e1e1e;
+        padding: 40px 30px;
+        border-radius: 16px;
+        width: 340px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+      }
+
+      h2 {
+        margin-bottom: 24px;
+        text-align: center;
+        color: #ffcc00;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #ccc;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 12px;
+        background-color: #292929;
+        color: white;
+        font-size: 16px;
+        box-sizing: border-box;
+        outline: none;
+        transition: box-shadow 0.3s ease;
+      }
+
+      input:focus {
+        box-shadow: 0 0 8px #ffcc00;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        background-color: #ffcc00;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 16px;
+        color: #121212;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .link-button {
+        background: none;
+        border: none;
+        color: #aaa;
+        text-decoration: underline;
+        cursor: pointer;
+        display: block;
+        margin-top: 14px;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .status-label {
+        margin-top: 16px;
+        text-align: center;
+        font-weight: bold;
+        min-height: 20px;
+        color: #ff4444;
+      }
+
+      .status-label.success {
+        color: #4caf50;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <h2>Create Account</h2>
+      <form id="signupForm" action="/signup.html" method="post" autocomplete="off">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+        />
+
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Choose a username"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Create a password"
+          required
+        />
+
+        <label for="confirm">Confirm Password</label>
+        <input
+          type="password"
+          id="confirm"
+          name="confirm"
+          placeholder="Repeat your password"
+          required
+        />
+
+        <button type="submit">Sign Up</button>
+
+        <button type="button" class="link-button" onclick="location.href='login.html'">
+          Already have an account? Login
+        </button>
+
+        <div id="status" class="status-label" aria-live="polite">
+          {% if status %}
+            <span class="{% if 'success' in status|lower %}success{% endif %}">{{ status }}</span>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById("signupForm").addEventListener("submit", function (e) {
+        const password = document.getElementById("password").value;
+        const confirm = document.getElementById("confirm").value;
+        if (password !== confirm) {
+          e.preventDefault();
+          const statusDiv = document.getElementById("status");
+          statusDiv.innerText = "Passwords do not match!";
+          statusDiv.classList.remove("success");
+          statusDiv.classList.add("status-label");
+        }
+      });
+    </script>
+  </body>
+</html>
