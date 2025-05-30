@@ -31,15 +31,7 @@ Easily add, complete, delete, and analyze your tasks with a smooth, responsive U
 
 ## 📁 Project Structure
 
-fastapi-todolist/
-|
-|-- static/           # (Optional) Static assets (CSS, images, JS)
-|-- templates/        # Jinja2 HTML templates
-|-- main.py           # FastAPI application entry point
-|-- database.py       # PostgreSQL connection and queries
-|-- requirements.txt  # Python dependencies
-`-- README.md         # Project documentation
-
+<pre> ```plaintext fastapi-todolist/ | |-- static/ # (Optional) Static assets (CSS, images, JS) |-- templates/ # Jinja2 HTML templates |-- main.py # FastAPI application entry point |-- database.py # PostgreSQL connection and queries |-- requirements.txt # Python dependencies `-- README.md # Project documentation ``` </pre>
 ---
 
 ## 💻 Setup Instructions
