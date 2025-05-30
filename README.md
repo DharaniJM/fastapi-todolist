@@ -76,17 +76,6 @@ uvicorn main:app --reload
 http://127.0.0.1:8000
 \`\`\`
 
----
-
-\`\`\`md
-### Homepage
-![Homepage](images/homepage.png)
-
-### Time Analysis View
-![Analysis](images/analysis.png)
-\`\`\`
-
----
 
 ## 🤝 Contributing
 
