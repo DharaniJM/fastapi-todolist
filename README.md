@@ -27,12 +27,6 @@ Easily add, complete, delete, and analyze your tasks with a smooth, responsive U
 - **Database Driver**: psycopg2  
 - **Templating Engine**: Jinja2  
 
----
-
-## 📁 Project Structure
-
-<pre> ```plaintext fastapi-todolist/ | |-- static/ # (Optional) Static assets (CSS, images, JS) |-- templates/ # Jinja2 HTML templates |-- main.py # FastAPI application entry point |-- database.py # PostgreSQL connection and queries |-- requirements.txt # Python dependencies `-- README.md # Project documentation ``` </pre>
----
 
 ## 💻 Setup Instructions
 
@@ -84,10 +78,6 @@ http://127.0.0.1:8000
 
 ---
 
-## 📸 Screenshots
-
-> You can include screenshots like this (after uploading images to the \`images/\` folder):
-
 \`\`\`md
 ### Homepage
 ![Homepage](images/homepage.png)
@@ -108,11 +98,4 @@ Contributions are welcome!
 
 For major features or bugs, open an issue first to discuss your ideas.
 
----
 
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-EOF
