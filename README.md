@@ -3,7 +3,7 @@
             A modern, dark-themed web application to manage and track your daily tasks using FastAPI, PostgreSQL, and Jinja2. This tool lets users add, complete, and delete tasks while visualizing 
             how time is spent across various categories.
 
-🚀 Features
+🚀 Features 
 ✅ Add, view, and delete tasks
 🕒 Track time spent per task and category
 📅 Filter tasks by date range
